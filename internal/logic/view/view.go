@@ -215,7 +215,8 @@ func (s *sView) getDefaultMainTpl(ctx context.Context) string {
 		urlPathArray = urlPathArray[1:]
 	}
 	switch {
-	case len(urlPathArray) == 2:
+	case len(urlPathArray) == 2 || (len(urlPathArray) >= 2 && urlPathArray[1] == "update"):
+
 		// 如果2级路由为数字，那么为模块的详情页面，那么路由固定为/xxx/detail。
 		// 如果需要定制化内容模板，请在具体路由方法中设置MainTpl。
 		if gstr.IsNumeric(urlPathArray[1]) {
